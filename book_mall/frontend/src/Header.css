@@ -1,0 +1,67 @@
+.header-container {
+    background: #2563eb;
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.nav-link:hover {
+    opacity: 0.9;
+    text-decoration: underline;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.auth-button {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.auth-button:hover {
+    opacity: 0.9;
+}
+
+.login-btn {
+    background: #22c55e;
+}
+
+.register-btn {
+    background: #8b5cf6;
+}
+
+.logout-btn {
+    background: #ef4444;
+}

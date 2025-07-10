@@ -1,0 +1,44 @@
+.book-list-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.book-list-container h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 2rem 0 3rem;
+}
+
+.book-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+@media (min-width: 768px) {
+    .book-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .book-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1280px) {
+    .book-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.book-item {
+    transition: transform 0.2s ease;
+}
+
+.book-item:hover {
+    transform: translateY(-5px);
+}

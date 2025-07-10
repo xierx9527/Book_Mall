@@ -1,0 +1,150 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* 英雄区域样式 */
+.hero-section {
+    background: #2563eb;
+    color: white;
+    padding: 4rem 1rem;
+}
+
+.hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+.cta-button {
+    display: inline-block;
+    background: white;
+    color: #2563eb;
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #f0f4ff;
+}
+
+/* 推荐图书区域 */
+.featured-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.section-header h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+}
+
+.view-all {
+    color: #2563eb;
+    font-weight: 500;
+}
+
+.view-all:hover {
+    text-decoration: underline;
+}
+
+.book-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* 特色区域样式 */
+.features-section {
+    background: #f8fafc;
+    padding: 3rem 1rem;
+}
+
+.features-section h2 {
+    text-align: center;
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+}
+
+.feature-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.feature-card p {
+    color: #64748b;
+    line-height: 1.6;
+}
+
+.horizontal-scroll {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 #f1f5f9;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+
+.horizontal-scroll::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+.horizontal-scroll::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.book-item {
+    min-width: 250px;
+    flex-shrink: 0;
+}

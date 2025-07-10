@@ -1,0 +1,63 @@
+.book-card {
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+    min-height: 320px;
+}
+
+.book-card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.book-cover {
+    width: 80%;
+    height: 12rem;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+
+.book-details {
+    padding: 1rem;
+}
+
+.book-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.book-author {
+    color: #666;
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+}
+
+.book-info {
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-top: 1px solid #eee;
+    /* 添加分割线 */
+}
+
+.book-price {
+    color: #2563eb;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.book-stock {
+    color: #666;
+    font-size: 0.875rem;
+}
+
+.meta-info {
+    margin-top: auto;
+    /* 信息区块底部对齐 */
+}
+
+.book-author {
+    margin-bottom: 0.8rem;
+}
