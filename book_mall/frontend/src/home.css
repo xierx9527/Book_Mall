@@ -1,49 +1,109 @@
+/* home.css - 现代化升级版 */
+
+/* 添加CSS变量 */
+:root {
+    --primary-gradient: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+    --accent-gradient: linear-gradient(135deg, #f72585 0%, #7209b7 100%);
+    --glass-bg: rgba(255, 255, 255, 0.9);
+    --shadow-lg: 0 20px 40px rgba(67, 97, 238, 0.15);
+    --shadow-hover: 0 30px 60px rgba(67, 97, 238, 0.25);
+}
+
 .home-container {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 4rem;
+    background: linear-gradient(180deg, #f8faff 0%, #ffffff 100%);
+    min-height: 100vh;
 }
 
-/* 英雄区域样式 */
+/* === 英雄区域现代化改造 === */
 .hero-section {
-    background: #2563eb;
+    background: var(--primary-gradient);
     color: white;
-    padding: 4rem 1rem;
+    padding: 6rem 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 添加几何背景装饰 */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
 }
 
 .hero-content {
     max-width: 1200px;
     margin: 0 auto;
     text-align: center;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-content h1 {
-    font-size: 2.25rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.9) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .hero-subtitle {
     font-size: 1.25rem;
-    max-width: 800px;
-    margin: 0 auto 2rem;
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    opacity: 0.95;
+    line-height: 1.6;
 }
 
 .cta-button {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
     background: white;
-    color: #2563eb;
-    padding: 0.75rem 2rem;
-    border-radius: 0.5rem;
-    font-weight: 500;
-    transition: background 0.3s ease;
+    color: #4361ee;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
 }
 
 .cta-button:hover {
-    background: #f0f4ff;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.3);
+    background: #f8faff;
+    color: #3a0ca3;
 }
 
-/* 推荐图书区域 */
+.cta-button::after {
+    content: '→';
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover::after {
+    opacity: 1;
+    transform: translateX(5px);
+}
+
+/* === 推荐图书区域 === */
 .featured-section {
     max-width: 1200px;
     margin: 0 auto;
@@ -54,97 +114,210 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 }
 
 .section-header h2 {
-    font-size: 1.875rem;
+    font-size: 2.25rem;
     font-weight: 700;
+    background: linear-gradient(135deg, #1a1a2e 0%, #4361ee 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .view-all {
-    color: #2563eb;
-    font-weight: 500;
+    color: #4361ee;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    border: 2px solid #e6f0ff;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .view-all:hover {
-    text-decoration: underline;
+    background: #4361ee;
+    color: white;
+    border-color: #4361ee;
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(67, 97, 238, 0.2);
 }
 
-.book-grid {
-    display: grid;
-    gap: 1.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+/* 水平滚动区域美化 */
+.horizontal-scroll {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    padding: 2rem 0.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: #4361ee #f1f5f9;
+    margin: 0 -0.5rem;
 }
 
-/* 特色区域样式 */
+.horizontal-scroll::-webkit-scrollbar {
+    height: 6px;
+}
+
+.horizontal-scroll::-webkit-scrollbar-track {
+    background: #f8faff;
+    border-radius: 10px;
+}
+
+.horizontal-scroll::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+    border-radius: 10px;
+}
+
+.book-item {
+    min-width: 280px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.book-item:hover {
+    transform: translateY(-5px);
+}
+
+/* === 特色区域升级 === */
 .features-section {
-    background: #f8fafc;
-    padding: 3rem 1rem;
+    background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%);
+    padding: 5rem 1rem;
+    position: relative;
+}
+
+.features-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #4361ee, transparent);
 }
 
 .features-section h2 {
     text-align: center;
-    font-size: 1.875rem;
+    font-size: 2.25rem;
     font-weight: 700;
     margin-bottom: 3rem;
+    background: linear-gradient(135deg, #1a1a2e 0%, #4361ee 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .feature-grid {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    gap: 1.5rem;
-    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .feature-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 0.5rem;
+    background: var(--glass-bg);
+    padding: 2.5rem;
+    border-radius: 20px;
     text-align: center;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-lg);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(67, 97, 238, 0.1);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(67, 97, 238, 0.3);
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #4361ee, #f72585);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover::before {
+    transform: scaleX(1);
 }
 
 .feature-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #4361ee, #3a0ca3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
 }
 
 .feature-card h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #1a1a2e;
 }
 
 .feature-card p {
     color: #64748b;
-    line-height: 1.6;
+    line-height: 1.7;
+    font-size: 1.1rem;
 }
 
-.horizontal-scroll {
-    display: flex;
-    gap: 1.5rem;
-    overflow-x: auto;
-    padding: 1rem 0;
-    scrollbar-width: thin;
-    scrollbar-color: #cbd5e1 #f1f5f9;
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .section-header h2,
+    .features-section h2 {
+        font-size: 1.75rem;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .horizontal-scroll {
+        gap: 1rem;
+    }
+
+    .book-item {
+        min-width: 260px;
+    }
 }
 
-.horizontal-scroll::-webkit-scrollbar {
-    height: 8px;
+/* 添加动画效果 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.horizontal-scroll::-webkit-scrollbar-track {
-    background: #f1f5f9;
+.hero-content,
+.featured-section,
+.features-section {
+    animation: fadeInUp 0.8s ease-out;
 }
 
-.horizontal-scroll::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
-    border-radius: 4px;
-}
-
-.book-item {
-    min-width: 250px;
-    flex-shrink: 0;
+.features-section {
+    animation-delay: 0.2s;
 }

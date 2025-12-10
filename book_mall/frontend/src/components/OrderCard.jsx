@@ -68,7 +68,7 @@ function OrderCard({ order, onDelete }) {
                 {order.book ? (
                     <div className="order-item">
                         <img
-                            src={order.book.cover_image || 'https://via.placeholder.com/50'}
+                            src={order.book.cover_image ? `http://localhost:8080/static/${order.book.cover_image}?t=${Date.now()}` : 'https://via.placeholder.com/50'}
                             alt={order.book.title || '商品图片'}
                             className="order-item-image"
                         />

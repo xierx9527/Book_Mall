@@ -1,63 +1,298 @@
+/* book-card.css - 现代化升级版 */
+
+/* 使用与主页一致的CSS变量 */
+:root {
+    --primary-color: #4361ee;
+    --primary-light: #e6f0ff;
+    --secondary-color: #7209b7;
+    --accent-color: #f72585;
+    --text-dark: #1a1a2e;
+    --text-light: #64748b;
+    --shadow-sm: 0 2px 8px rgba(67, 97, 238, 0.1);
+    --shadow-md: 0 8px 30px rgba(67, 97, 238, 0.15);
+    --shadow-lg: 0 15px 50px rgba(67, 97, 238, 0.2);
+    --border-light: rgba(67, 97, 238, 0.1);
+}
+
 .book-card {
-    background: white;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
     overflow: hidden;
-    transition: box-shadow 0.3s ease;
-    min-height: 320px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 380px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-light);
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+.book-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transform: scaleX(0);
+    transition: transform 0.5s ease;
+    z-index: 2;
 }
 
 .book-card:hover {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-8px);
+    border-color: rgba(67, 97, 238, 0.3);
+}
+
+.book-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* 添加装饰性边框效果 */
+.book-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 1px;
+    background: linear-gradient(135deg,
+            rgba(67, 97, 238, 0.1),
+            rgba(247, 37, 133, 0.1));
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.book-card:hover::after {
+    opacity: 1;
 }
 
 .book-cover {
     width: 80%;
     height: 12rem;
     object-fit: cover;
-    border-bottom: 1px solid #eee;
+    border-bottom: none;
+    border-radius: 12px;
+    margin: 1.5rem auto 1rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.5s ease;
+}
+
+.book-card:hover .book-cover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
 }
 
 .book-details {
-    padding: 1rem;
+    padding: 1.25rem 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .book-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--text-dark);
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.book-title:hover {
+    color: var(--primary-color);
 }
 
 .book-author {
-    color: #666;
-    font-size: 0.875rem;
-    margin-bottom: 0.75rem;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.book-author::before {
+    content: '✍️';
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+.meta-info {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-light);
 }
 
 .book-info {
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 0;
-    border-top: 1px solid #eee;
-    /* 添加分割线 */
+    padding: 0.75rem 0;
+    border-top: none;
+    display: flex;
+    gap: 0.5rem;
 }
 
 .book-price {
-    color: #2563eb;
-    font-weight: 700;
-    font-size: 1.1rem;
+    color: var(--primary-color);
+    font-weight: 800;
+    font-size: 1.4rem;
+    background: linear-gradient(135deg, var(--primary-light), #ffffff);
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    box-shadow: 0 4px 12px rgba(67, 97, 238, 0.1);
+}
+
+.book-price::before {
+    content: '¥';
+    font-size: 1rem;
+    opacity: 0.8;
+    font-weight: 600;
 }
 
 .book-stock {
-    color: #666;
-    font-size: 0.875rem;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.4rem 0.8rem;
+    background: rgba(67, 97, 238, 0.08);
+    border-radius: 8px;
+    border: 1px solid rgba(67, 97, 238, 0.15);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
 }
 
-.meta-info {
-    margin-top: auto;
-    /* 信息区块底部对齐 */
+.book-stock::before {
+    content: '📦';
+    font-size: 0.8rem;
 }
 
-.book-author {
-    margin-bottom: 0.8rem;
+/* 添加评分元素样式（如果后端有评分数据） */
+.book-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+    color: #ffb400;
+}
+
+.book-rating span:last-child {
+    color: var(--text-light);
+    margin-left: 0.25rem;
+}
+
+/* 悬停时的额外信息 */
+.book-card:hover .book-stock {
+    background: rgba(67, 97, 238, 0.15);
+    border-color: rgba(67, 97, 238, 0.3);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .book-card {
+        min-height: 350px;
+        border-radius: 12px;
+    }
+
+    .book-cover {
+        height: 10rem;
+        margin: 1rem auto 0.75rem;
+    }
+
+    .book-details {
+        padding: 1rem;
+    }
+
+    .book-title {
+        font-size: 1.15rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .book-price {
+        font-size: 1.25rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .book-stock {
+        font-size: 0.85rem;
+        padding: 0.3rem 0.6rem;
+    }
+}
+
+/* 深色模式支持 */
+@media (prefers-color-scheme: dark) {
+    .book-card {
+        background: rgba(30, 41, 59, 0.95);
+        border-color: rgba(67, 97, 238, 0.3);
+        color: #e2e8f0;
+    }
+
+    .book-title {
+        color: #f1f5f9;
+    }
+
+    .book-author {
+        color: #94a3b8;
+    }
+
+    .book-price {
+        background: rgba(67, 97, 238, 0.2);
+        color: #60a5fa;
+    }
+
+    .book-stock {
+        background: rgba(67, 97, 238, 0.15);
+        border-color: rgba(67, 97, 238, 0.3);
+        color: #94a3b8;
+    }
+
+    .meta-info {
+        border-top-color: rgba(67, 97, 238, 0.2);
+    }
+}
+
+/* 确保链接样式正确 */
+.book-card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
+/* 加载状态样式 */
+.book-card.loading {
+    background: linear-gradient(90deg,
+            rgba(248, 250, 255, 0.9) 25%,
+            rgba(236, 240, 253, 0.9) 50%,
+            rgba(248, 250, 255, 0.9) 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
 }

@@ -1,67 +1,544 @@
+/* header.css - 现代化升级 */
+
+/* 使用与主页一致的CSS变量 */
+:root {
+    --primary-gradient: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+    --success-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    --purple-gradient: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    --danger-gradient: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    --glass-bg: rgba(255, 255, 255, 0.95);
+    --shadow-md: 0 10px 25px rgba(67, 97, 238, 0.15);
+    --shadow-lg: 0 20px 40px rgba(67, 97, 238, 0.2);
+    --text-dark: #1a1a2e;
+    --text-light: #64748b;
+}
+
 .header-container {
-    background: #2563eb;
+    background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
     color: white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 25px rgba(67, 97, 238, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.header-container.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(67, 97, 238, 0.1);
+}
+
+.header-container.scrolled .brand-logo {
+    background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.header-container.scrolled .nav-link {
+    color: var(--text-dark);
+}
+
+.header-container.scrolled .auth-button {
+    color: white;
 }
 
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 1rem 1.5rem;
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 2rem;
 }
 
+/* 品牌Logo - 现代化升级 */
 .brand-logo {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 1.75rem;
+    font-weight: 800;
     text-decoration: none;
     color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    transition: all 0.3s ease;
 }
 
+.brand-logo::before {
+    content: '📚';
+    font-size: 1.5rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.brand-logo:hover {
+    transform: translateY(-2px);
+}
+
+.logo-text {
+    background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.9) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* 主导航链接 - 现代化升级 */
 .nav-links {
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
     align-items: center;
+    flex: 1;
+    justify-content: center;
 }
 
 .nav-link {
-    color: white;
+    color: rgba(255, 255, 255, 0.95);
     text-decoration: none;
-    transition: opacity 0.2s;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
 }
+
+.nav-link::before {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.nav-link:nth-child(1)::before {
+    content: '🏠';
+}
+
+/* 首页 */
+.nav-link:nth-child(2)::before {
+    content: '📖';
+}
+
+/* 图书 */
+.nav-link:nth-child(3)::before {
+    content: '📦';
+}
+
+/* 订单 */
+.nav-link:nth-child(4)::before {
+    content: '⚙️';
+}
+
+/* 管理 */
 
 .nav-link:hover {
-    opacity: 0.9;
-    text-decoration: underline;
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    text-decoration: none;
 }
 
+.nav-link.active {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+}
+
+/* 滚动时的导航链接样式 */
+.header-container.scrolled .nav-link {
+    color: var(--text-dark);
+}
+
+.header-container.scrolled .nav-link:hover {
+    background: rgba(67, 97, 238, 0.1);
+    color: #4361ee;
+}
+
+.header-container.scrolled .nav-link.active {
+    background: var(--primary-gradient);
+    color: white;
+}
+
+/* 用户区域 - 现代化升级 */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: auto;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--glass-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #4361ee;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.user-avatar:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.user-name {
+    font-weight: 600;
+    color: white;
+    font-size: 0.95rem;
+}
+
+.header-container.scrolled .user-name {
+    color: var(--text-dark);
+}
+
+/* 认证按钮 - 现代化升级 */
 .auth-buttons {
     display: flex;
     gap: 1rem;
+    align-items: center;
 }
 
 .auth-button {
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
     border: none;
     cursor: pointer;
-    transition: opacity 0.2s;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    min-width: 100px;
+    justify-content: center;
 }
 
-.auth-button:hover {
-    opacity: 0.9;
+.auth-button::before {
+    font-size: 1rem;
 }
 
 .login-btn {
-    background: #22c55e;
+    background: var(--success-gradient);
+    color: white;
+}
+
+.login-btn::before {
+    content: '🔑';
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
 }
 
 .register-btn {
-    background: #8b5cf6;
+    background: var(--purple-gradient);
+    color: white;
+}
+
+.register-btn::before {
+    content: '📝';
+}
+
+.register-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
 }
 
 .logout-btn {
-    background: #ef4444;
+    background: var(--danger-gradient);
+    color: white;
+}
+
+.logout-btn::before {
+    content: '🚪';
+}
+
+.logout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3);
+}
+
+/* 移动端菜单按钮 */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* 移动端菜单 */
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(67, 97, 238, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    z-index: 999;
+}
+
+.mobile-menu.active {
+    display: block;
+}
+
+.mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.mobile-nav-link {
+    color: var(--text-dark);
+    text-decoration: none;
+    padding: 1rem;
+    border-radius: 10px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.mobile-nav-link:hover {
+    background: rgba(67, 97, 238, 0.1);
+    color: #4361ee;
+}
+
+.mobile-nav-link.active {
+    background: var(--primary-gradient);
+    color: white;
+}
+
+.mobile-auth-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(67, 97, 238, 0.1);
+}
+
+.mobile-auth-button {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+/* 购物车图标（可选添加） */
+.cart-icon {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cart-icon:hover {
+    transform: scale(1.1);
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--danger-gradient);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+}
+
+/* 搜索框（可选添加） */
+.search-container {
+    flex: 1;
+    max-width: 400px;
+    margin: 0 2rem;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.75rem 1.25rem;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* 滚动时搜索框样式 */
+.header-container.scrolled .search-input {
+    background: rgba(67, 97, 238, 0.1);
+    border-color: rgba(67, 97, 238, 0.2);
+    color: var(--text-dark);
+}
+
+.header-container.scrolled .search-input::placeholder {
+    color: var(--text-light);
+}
+
+/* 响应式调整 */
+@media (max-width: 1024px) {
+    .search-container {
+        max-width: 300px;
+        margin: 0 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0.75rem 1rem;
+    }
+
+    .nav-links,
+    .auth-buttons,
+    .search-container {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .brand-logo {
+        font-size: 1.5rem;
+    }
+
+    .mobile-menu {
+        display: none;
+    }
+
+    .mobile-menu.active {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .brand-logo {
+        font-size: 1.25rem;
+    }
+
+    .mobile-nav-link {
+        padding: 0.75rem;
+        font-size: 0.95rem;
+    }
+
+    .mobile-auth-button {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* 动画效果 */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header-container {
+    animation: slideDown 0.5s ease-out;
+}
+
+/* 深色模式支持 */
+@media (prefers-color-scheme: dark) {
+    .header-container.scrolled {
+        background: rgba(30, 41, 59, 0.95);
+        border-bottom: 1px solid rgba(67, 97, 238, 0.3);
+    }
+
+    .header-container.scrolled .brand-logo {
+        color: white;
+        background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.9) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .header-container.scrolled .nav-link {
+        color: #e2e8f0;
+    }
+
+    .header-container.scrolled .nav-link:hover {
+        background: rgba(67, 97, 238, 0.2);
+        color: #60a5fa;
+    }
+
+    .header-container.scrolled .search-input {
+        background: rgba(67, 97, 238, 0.15);
+        border-color: rgba(67, 97, 238, 0.3);
+        color: #e2e8f0;
+    }
+
+    .mobile-menu {
+        background: rgba(30, 41, 59, 0.98);
+        border-color: rgba(67, 97, 238, 0.3);
+    }
+
+    .mobile-nav-link {
+        color: #e2e8f0;
+    }
 }
