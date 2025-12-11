@@ -14,7 +14,7 @@ var db *gorm.DB
 func InitDB() {
 	dsn := os.Getenv("MYSQL_DSN")
 	if dsn == "" {
-		dsn = "root:20041017@tcp(127.0.0.1:3306)/Book_Mall?charset=utf8mb4&parseTime=True&loc=Local"
+		dsn = "用户名:密码@tcp(数据库地址:3306)/Book_Mall?charset=utf8mb4&parseTime=True&loc=Local"
 	}
 
 	var err error
